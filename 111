@@ -1,0 +1,82 @@
+# Необходимо реализовать классы животных на ферме:
+
+# Коровы, козы, овцы, свиньи;
+# Утки, куры, гуси.
+# Условия:
+
+# Должен быть один базовый класс, который наследуют все остальные животные.
+# Базовый класс должен определять общие характеристики и интерфейс.
+
+
+class animal:
+  weight = 0
+  position = 0
+  
+  def feed (self):
+    weight += 1
+    return
+  
+  def move_to (self, destX, destY):
+    # position 
+    return
+  
+  def __init__ (w=0, x=10, y=10):
+    weight = 0
+    position = [10,10]
+    return
+
+
+class mammal(animal):
+  
+  milk = 0
+  
+  def milk (self):
+    weight -= 1
+    milk += 1
+    return
+
+class cow(mammal):
+  pass
+  
+
+class goat(mammal):
+  pass
+
+class sheep(mammal):
+  pass
+
+
+class pig(mammal):
+  
+  def milk (self):
+    return
+
+class bird(animal):
+  
+  egg = 0
+  
+  def generate_egg(self):
+      weight -= 1
+      egg += 10
+      return
+
+class duck(bird):
+  pass
+
+class hen (bird):
+  pass
+
+class goose(bird):
+  
+    def generate_egg(self):
+      weight -= 1
+      return
+  
+
+
+
+
+a = pig
+a.weight = 15
+print (a.weight)
+
