@@ -12,103 +12,89 @@
 
 
 class animal:
-  weight = None
-  position = None
-  food = None
+    weight = None
+    position = None
+    food = None
 
-  def feed (self, f):
-    food += f
+    def feed(self, f):
+        food += f
     return
-  
-  def eat (self, f):
-    weight += f
-    food -= f
+
+    def eat(self, f):
+        weight += f
+        food -= f
     return
-  
-  def move_to (self, destX, destY):
-    # position 
+# position 
+    def move_to(self, destX, destY):
     return
 
 # исходный зверь весит 10 килограмм и находится по адресу 10.10.
-  
-  def __init__ (self, w=10, x=10, y=10):
-    weight = w
-    position = [x,y]
+    def __init__(self, w=10, x=10, y=10):
+        weight = w
+        position = [x, y]
     return
 
 # млекопитающие по сравнению с просто животным научились генерировать молоко.
-
 class mammal(animal):
-  
-  milk = 0
-  
-  def produce_milk (self, m):
-    weight -= m
-    milk += m
+    milk = 0
+    def produce_milk(self, m):
+        weight -= m
+        milk += m
     return
 
 class cow(mammal):
-  pass
+    pass
 
 class goat(mammal):
-  pass
+    pass
 
 # овцы дополнительно научились производить шерсть.
 
 class sheep(mammal):
-  
-  wool = 0
-  
-  def produce_wool (self, m):
-    weight -= m
-    milk += m
+    wool = 0
+    def produce_wool(self, m):
+        weight -= m
+        milk += m
     return
-  pass
+    pass
 
 # однако свиньи молоко генерировать категорически не хотят, переопределяем родительский метод.
 
 class pig(mammal):
-  
-  def milk (self):
+    def milk(self):
     return 0
 
 # Переходим к птицам. Птицы умеют производить яйца.
 
 class bird(animal):
-  
-  eggs = 0
-  
-  def produce_eggs(self, e):
-      weight -= e
-      eggs += e
-      return
+    eggs = 0
+    def produce_eggs(self, e):
+        weight -= e
+        eggs += e
+    return
 
 # утки несут яйца точно также как "птица вообще"
 
 class duck(bird):
-  pass
+    pass
 
 # куры способны снести вдвое больше яиц
 
-class hen (bird):
-  
-  def produce_eggs(self, e):
-    weight -= e
-    eggs += 2*e
+class hen(bird):
+    def produce_eggs(self, e):
+        weight -= e
+        eggs += 2*e
     return
-  
-  pass
+    pass
 
 # а вот гусям приходится тяжело и они худеют от расстройства.
 
 class goose(bird):
-  
     def produce_eggs(self, e):
-      weight -= e
-      eggs += e
-      weight -= 1
-      return
-
+        weight -= e
+        eggs += e
+        weight -= 1
+    return
 
 # Проверяем:
 
