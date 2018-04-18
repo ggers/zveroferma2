@@ -112,9 +112,9 @@ class goose(bird):
 
 # Проверяем:
 
-b = pig
+b = pig()
 print ("Создан проверочный поросенок весом", b.weight)
-a = pig
+a = pig()
 a.weight = 15
 print ("Создан проверочный поросенок весом", a.weight)
 a.produce_milk
