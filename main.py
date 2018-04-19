@@ -11,14 +11,14 @@
 # у каждой зверюшки будет основные характеристики "вес" "запас корма". А также позиция в некоем виртуальном пастбище. исходное животное умеет получать корм (feed) и поедать этот корм, толстея на вес еды (eat). Позиция и передвижение оставляем про запас, для реализации условными коллегами. 
 
 
-class animal:
+class Animal:
     weight = None
     position = None
     food = None
 
     def feed(self, f):
         if food is None:
-                food = 0
+            food = 0
         food += f
     return
 
@@ -26,9 +26,11 @@ class animal:
         weight += f
         food -= f
     return
-# position 
+
     def move_to(self, destX, destY):
     return
+    pass
+
 
 # исходный зверь весит 10 килограмм и находится по адресу 10.10.
     def __init__(self, w=10, x=10, y=10):
@@ -36,76 +38,88 @@ class animal:
         food = 0
         position = [x, y]
     return
+    pass
+
 
 # млекопитающие по сравнению с просто животным научились генерировать молоко.
-class mammal(animal):
+class Mammal(Animal):
     milk = 0
     def produce_milk(self, m):
         weight -= m
         milk += m
     return
 
-class cow(mammal):
+
+class Cow(Mammal):
     pass
 
-class goat(mammal):
+
+class Goat(Mammal):
     pass
+
 
 # овцы дополнительно научились производить шерсть.
-
-class sheep(mammal):
+class Sheep(Mammal):
     wool = 0
+    
     def produce_wool(self, m):
         weight -= m
         milk += m
     return
     pass
 
-# однако свиньи молоко генерировать категорически не хотят, переопределяем родительский метод.
 
-class pig(mammal):
+# однако свиньи молоко генерировать категорически не хотят, переопределяем родительский метод.
+class Pig(Mammal):
+
     def milk(self):
     return 0
+    pass
 
 # Переходим к птицам. Птицы умеют производить яйца.
-
-class bird(animal):
+class Bird(Animal):
     eggs = 0
+
     def produce_eggs(self, e):
         weight -= e
         eggs += e
     return
-
-# утки несут яйца точно также как "птица вообще"
-
-class duck(bird):
     pass
 
-# куры способны снести вдвое больше яиц
 
-class hen(bird):
+# утки несут яйца точно также как "птица вообще"
+class Duck(Bird):
+    pass
+
+
+# куры способны снести вдвое больше яиц
+class Hen(Bird):
+
     def produce_eggs(self, e):
         weight -= e
         eggs += 2*e
     return
     pass
 
-# а вот гусям приходится тяжело и они худеют от расстройства.
 
-class goose(bird):
+# а вот гусям приходится тяжело и они худеют от расстройства.
+class Goose(bird):
+
     def produce_eggs(self, e):
         weight -= e
         eggs += e
         weight -= 1
     return
+    pass
+
 
 # Проверяем:
+pig_beta = pig()
+print ("Создан проверочный поросенок весом", pig_beta.weight)
 
-b = pig()
-print ("Создан проверочный поросенок весом", b.weight)
-a = pig()
-a.weight = 15
-print ("Создан проверочный поросенок весом", a.weight)
-a.produce_milk
-print ("Поросенок способен произвести", a.milk, "молока")
+pig_alpha = pig()
+pig_alpha.weight = 15
+print ("Создан проверочный поросенок весом", pig_alpha.weight)
+pig_alpha.produce_milk
+print ("Поросенок способен произвести", pig_alpha.milk, "молока")
 
