@@ -17,6 +17,8 @@ class animal:
     food = None
 
     def feed(self, f):
+        if food is None:
+                food = 0
         food += f
     return
 
@@ -31,6 +33,7 @@ class animal:
 # исходный зверь весит 10 килограмм и находится по адресу 10.10.
     def __init__(self, w=10, x=10, y=10):
         weight = w
+        food = 0
         position = [x, y]
     return
 
