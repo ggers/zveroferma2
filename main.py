@@ -8,46 +8,43 @@
 # Базовый класс должен определять общие характеристики и интерфейс.
 
 # допустим, мы будем делать заготовку для игры весёлая ферма, её животноводческая часть.
-# у каждой зверюшки будет основные характеристики "вес" "запас корма". А также позиция в некоем виртуальном пастбище. исходное животное умеет получать корм (feed) и поедать этот корм, толстея на вес еды (eat). Позиция и передвижение оставляем про запас, для реализации условными коллегами. 
-
+# у каждой зверюшки будет основные характеристики "вес" "запас корма".
+# исходное животное умеет получать корм(feed) и поедать этот корм, толстея на вес еды(eat).\
+# Позиция и передвижение оставляем про запас, для реализации условными коллегами.
+# А также позиция в некоем виртуальном пастбище.
 
 class Animal:
-    weight = None
-    position = None
+    weight = 0
+    position = 0
     food = None
 
     def feed(self, f):
-        if food is None:
-            food = 0
-        food += f
-    return
+        self.food += f
 
     def eat(self, f):
-        weight += f
-        food -= f
-    return
+        self.weight += f
+        self.food -= f
 
     def move_to(self, destX, destY):
-    return
+        return
+
+    def __init__(self, w=10, f=0):
+        self.weight = w
+        self.food = f
+
     pass
-
-
-# исходный зверь весит 10 килограмм и находится по адресу 10.10.
-    def __init__(self, w=10, x=10, y=10):
-        weight = w
-        food = 0
-        position = [x, y]
-    return
-    pass
-
 
 # млекопитающие по сравнению с просто животным научились генерировать молоко.
+# а также мы можем сравнить их вес, переопределив операторы < и >
 class Mammal(Animal):
     milk = 0
+
     def produce_milk(self, m):
-        weight -= m
-        milk += m
-    return
+        self.weight -= m
+        self.milk += m
+
+    def __lt__(self, other):
+        return self.weight < other.weight
 
 
 class Cow(Mammal):
@@ -61,11 +58,11 @@ class Goat(Mammal):
 # овцы дополнительно научились производить шерсть.
 class Sheep(Mammal):
     wool = 0
-    
+
     def produce_wool(self, m):
-        weight -= m
-        milk += m
-    return
+        self.weight -= m
+        self. milk += m
+
     pass
 
 
@@ -73,17 +70,19 @@ class Sheep(Mammal):
 class Pig(Mammal):
 
     def milk(self):
-    return 0
+        return 0
+
     pass
+
 
 # Переходим к птицам. Птицы умеют производить яйца.
 class Bird(Animal):
     eggs = 0
 
     def produce_eggs(self, e):
-        weight -= e
-        eggs += e
-    return
+        self.weight -= e
+        self.eggs += e
+
     pass
 
 
@@ -96,30 +95,39 @@ class Duck(Bird):
 class Hen(Bird):
 
     def produce_eggs(self, e):
-        weight -= e
-        eggs += 2*e
-    return
+        self.weight -= e
+        self.eggs += 2 * e
+
     pass
 
 
 # а вот гусям приходится тяжело и они худеют от расстройства.
-class Goose(bird):
+class Goose(Bird):
 
     def produce_eggs(self, e):
-        weight -= e
-        eggs += e
-        weight -= 1
-    return
+        self.weight -= e
+        self.eggs += e
+        self.weight -= 1
+
     pass
 
 
 # Проверяем:
-pig_beta = pig()
-print ("Создан проверочный поросенок весом", pig_beta.weight)
+pig_beta = Pig()
+print("Создан проверочный поросенок Бета весом", pig_beta.weight, "\nБлагодаря инициализация вес остаётся 10 \n")
 
-pig_alpha = pig()
+pig_alpha = Pig()
 pig_alpha.weight = 15
-print ("Создан проверочный поросенок весом", pig_alpha.weight)
-pig_alpha.produce_milk
-print ("Поросенок способен произвести", pig_alpha.milk, "молока")
+print("Создан проверочный поросенок Альфа весом", pig_alpha.weight, "\nВручную установили вес 15\n")
 
+pig_delta = Pig(66)
+print("Создан проверочный поросенок Дельта весом", pig_delta.weight, "\nПри создании с параметром вес равен параметру 66\n")
+
+pig_gamma = Pig()
+pig_gamma.feed(20)
+pig_gamma.eat(19)
+print("Создан проверочный поросенок Гамма весом", pig_gamma.weight, "\nИспользуя методы класса вес равен 29\n")
+
+print("Вес поросёнка Альфа {}, а вес поросёнка Дельта {}".format(pig_alpha.weight, pig_gamma.weight))
+print("Вес поросёнка Альфа меньше веса поросёнка Дельта?", pig_alpha < pig_delta)
+print("Вес поросёнка Альфа больше веса поросёнка Дельта?", pig_alpha > pig_delta)
