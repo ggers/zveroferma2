@@ -28,19 +28,23 @@ class Animal:
     def move_to(self, destX, destY):
         return
 
-    def __init__(self, f=10):
-        self.food = 0
-        self.food += f
+    def __init__(self, w=10, f=0):
+        self.weight = w
+        self.food = f
 
     pass
 
 # млекопитающие по сравнению с просто животным научились генерировать молоко.
+# а также мы можем сравнить их вес, переопределив операторы < и >
 class Mammal(Animal):
     milk = 0
 
     def produce_milk(self, m):
         self.weight -= m
         self.milk += m
+
+    def __lt__(self, other):
+        return self.weight < other.weight
 
 
 class Cow(Mammal):
@@ -110,19 +114,19 @@ class Goose(Bird):
 
 # Проверяем:
 pig_beta = Pig()
-print("Создан проверочный поросенок Бета весом", pig_beta.weight, "\nБлагодаря инициализация вес остаётся 0 \n")
+print("Создан проверочный поросенок Бета весом", pig_beta.weight, "\nБлагодаря инициализация вес остаётся 10 \n")
 
 pig_alpha = Pig()
 pig_alpha.weight = 15
 print("Создан проверочный поросенок Альфа весом", pig_alpha.weight, "\nВручную установили вес 15\n")
 
-pig_delta = Pig(666)
+pig_delta = Pig(66)
 print("Создан проверочный поросенок Дельта весом", pig_delta.weight, "\nПри создании с параметром вес равен параметру 66\n")
 
 pig_gamma = Pig()
 pig_gamma.feed(20)
 pig_gamma.eat(19)
-print("Создан проверочный поросенок Гамма весом", pig_gamma.weight, "\nИспользуя методы класса вес равен 19\n")
+print("Создан проверочный поросенок Гамма весом", pig_gamma.weight, "\nИспользуя методы класса вес равен 29\n")
 
 print("Вес поросёнка Альфа {}, а вес поросёнка Дельта {}".format(pig_alpha.weight, pig_gamma.weight))
 print("Вес поросёнка Альфа меньше веса поросёнка Дельта?", pig_alpha < pig_delta)
