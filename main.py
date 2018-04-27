@@ -32,9 +32,8 @@ class Animal:
         self.weight = w
         self.food = f
 
-    pass
 
-# млекопитающие по сравнению с просто животным научились генерировать молоко.
+ # млекопитающие по сравнению с просто животным научились генерировать молоко.
 # а также мы можем сравнить их вес, переопределив операторы < и >
 class Mammal(Animal):
     milk = 0
@@ -63,16 +62,12 @@ class Sheep(Mammal):
         self.weight -= m
         self. milk += m
 
-    pass
-
 
 # однако свиньи молоко генерировать категорически не хотят, переопределяем родительский метод.
 class Pig(Mammal):
 
     def milk(self):
         return 0
-
-    pass
 
 
 # Переходим к птицам. Птицы умеют производить яйца.
@@ -82,8 +77,6 @@ class Bird(Animal):
     def produce_eggs(self, e):
         self.weight -= e
         self.eggs += e
-
-    pass
 
 
 # утки несут яйца точно также как "птица вообще"
@@ -98,8 +91,6 @@ class Hen(Bird):
         self.weight -= e
         self.eggs += 2 * e
 
-    pass
-
 
 # а вот гусям приходится тяжело и они худеют от расстройства.
 class Goose(Bird):
@@ -108,8 +99,6 @@ class Goose(Bird):
         self.weight -= e
         self.eggs += e
         self.weight -= 1
-
-    pass
 
 
 # Проверяем:
