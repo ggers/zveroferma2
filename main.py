@@ -17,6 +17,7 @@ class Animal:
     weight = 0
     position = 0
     food = None
+    name = ""
 
     def feed(self, f):
         self.food += f
@@ -28,7 +29,7 @@ class Animal:
     def move_to(self, destX, destY):
         return
 
-    def __init__(self, w=10, f=0):
+    def __init__(self, name="NoName", w=10, f=0):
         self.weight = w
         self.food = f
 
